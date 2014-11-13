@@ -9,7 +9,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-
+<?php 
+	// connection database
+	require 'include/configure.php';
+?>
 <title>SB Admin - Bootstrap Admin Template</title>
 
 <!-- Bootstrap Core CSS -->
@@ -164,3 +167,4 @@
 			</div>
 			<!-- /.navbar-collapse -->
 		</nav>
+		
