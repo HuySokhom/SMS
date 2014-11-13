@@ -17,14 +17,21 @@ if($_POST['page'])
 	$start = $page * $per_page;
 	
 
-	$query_pag_data = "SELECT id,name from administrator LIMIT $start, $per_page";
+	$query_pag_data = "SELECT * from administrator LIMIT $start, $per_page";
+	
 	$result_pag_data = mysql_query($query_pag_data) or die('MySql Error' . mysql_error());
-	$msg = "";
+	
+	$msg = "<table width=100% class='table table-bordered'><tr>
+				<th width='600px'>Name</th>
+				<th width='600px'>Password</th>
+				<th>Action</th>
+			</tr>";
 	while ($row = mysql_fetch_array($result_pag_data)) {
-		$htmlmsg=htmlentities($row['name']);
-		$msg .= "<li><b>" . $row['id'] . "</b> " . $htmlmsg . "</li>";
+		$htmlmsg = htmlentities($row['password']);
+		$msg .= "<tr><td>" . $row['name'] . "</td><td>" . $htmlmsg . "</td>";
+		$msg .="<td><a href=''>Edit</a></td></tr>";
 	}
-	$msg = "<div class='data'><ul>" . $msg . "</ul></div>"; // Content for Data
+	$msg = "<div class='data'>" . $msg . "</table></div>"; // Content for Data
 
 
 	/* --------------------------------------------- */
