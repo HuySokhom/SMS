@@ -1,8 +1,8 @@
 #loading{
     width: 100%;
     position: absolute;
-    top: 210px;
-    left: 400px;
+    top: 50%;
+    left: 50%;
 }
 #container .pagination ul li.inactive,
 #container .pagination ul li.inactive:hover{
@@ -21,7 +21,7 @@
 
 #container .pagination{
     width: 800px;
-    height: 25px;
+    height: 20px;
 }
 #container .pagination ul li{
     list-style: none;
@@ -52,7 +52,7 @@
 }
 .total
 {
-	float:right;
+	float: left;
 	font-family:arial;
 	color:#999;
 }
