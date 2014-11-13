@@ -144,11 +144,11 @@
 				<ul class="nav navbar-nav side-nav">
 					<li class="active"><a href="index.php"><i
 							class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
-					<li><a href="#"><i class="fa fa-fw fa-bar-chart-o"></i>
-							Charts</a></li>
-					<li><a href="#"><i class="fa fa-fw fa-table"></i> Tables</a>
+					<li><a href="admin.php"><i class="fa fa-fw fa-bar-chart-o"></i>
+							Admininstrator Tool</a></li>
+					<li><a href="student.php"><i class="fa fa-fw fa-table"></i> Students</a>
 					</li>
-					<li><a href="#"><i class="fa fa-fw fa-edit"></i> Forms</a>
+					<li><a href="#"><i class="fa fa-fw fa-edit"></i> Payments</a>
 					</li>
 					<li><a href="#"><i
 							class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a></li>
