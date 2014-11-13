@@ -102,12 +102,12 @@
 			// SQL query to fetch information of registerd users and finds user match.
 			$query = mysql_query("select * from administrator where password='$password' AND name='$username'");
 			$rows = mysql_num_rows($query);
-			var_dump($rows);
+			
 			if ($rows == 1) {
 				$_SESSION['login_user']=$username; // Initializing Session
 				header("location: index.php"); // Redirecting To Other Page
 			} else {
-				$error = "Username or Password is invalid";
+				$error = "<div class='alert alert-warning'><strong>Error!</strong>Username or Password is invalid</div>";
 			}
 			
 		}
@@ -145,7 +145,7 @@
                     Remember me
                 </label>
                 <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
-                <?php echo $error;?>
+                <span><?php echo $error;?></span>
                 </form>
             </div>
         </div>
