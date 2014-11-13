@@ -78,6 +78,41 @@
 }
 -->
 </style>
+<?php 
+	require 'include/configure.php';
+	session_start(); // Starting Session
+	$error=''; // Variable To Store Error Message
+	if (isset($_POST['submit'])) {
+		
+		if (empty($_POST['name']) || empty($_POST['password'])) {
+			$error = "Username or Password is invalid";
+		}
+		else
+		{
+			// Define $username and $password
+			$username=$_POST['name'];
+			$password=$_POST['password'];
+			// Establishing Connection with Server by passing server_name, user_id and password as a parameter
+			// To protect MySQL injection for Security purpose
+			$username = stripslashes($username);
+			$password = stripslashes($password);
+			$username = mysql_real_escape_string($username);
+			$password = mysql_real_escape_string($password);
+			// Selecting Database
+			// SQL query to fetch information of registerd users and finds user match.
+			$query = mysql_query("select * from administrator where password='$password' AND name='$username'");
+			$rows = mysql_num_rows($query);
+			var_dump($rows);
+			if ($rows == 1) {
+				$_SESSION['login_user']=$username; // Initializing Session
+				header("location: index.php"); // Redirecting To Other Page
+			} else {
+				$error = "Username or Password is invalid";
+			}
+			
+		}
+	}
+?>
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -90,6 +125,7 @@
                 	type="text" 
                 	class="form-control" 
                 	name="name" 
+                	id="name"
                 	placeholder="Name" 
                 	required 
                 	autofocus
@@ -97,11 +133,12 @@
                 <input 
 	                type="password" 
 	                name="password" 
+	                id="password"
 	                class="form-control" 
 	                placeholder="Password" 
 	                required
                 >
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">
                     Sign in</button>
                 <label class="checkbox pull-left">
                     <input type="checkbox" value="remember-me">
@@ -114,38 +151,5 @@
         </div>
     </div>
 </div>
-<?php 
-	session_start(); // Starting Session
-	$error=''; // Variable To Store Error Message
-	if (isset($_POST['submit'])) {echo 'dsf';
-		if (empty($_POST['name']) || empty($_POST['password'])) {
-			$error = "Username or Password is invalid";
-		}
-		else
-		{
-			// Define $username and $password
-			$username=$_POST['username'];
-			$password=$_POST['password'];
-			// Establishing Connection with Server by passing server_name, user_id and password as a parameter
-			$connection = mysql_connect("localhost", "root", "");
-			// To protect MySQL injection for Security purpose
-			$username = stripslashes($username);
-			$password = stripslashes($password);
-			$username = mysql_real_escape_string($username);
-			$password = mysql_real_escape_string($password);
-			// Selecting Database
-			$db = mysql_select_db("company", $connection);
-			// SQL query to fetch information of registerd users and finds user match.
-			$query = mysql_query("select * from login where password='$password' AND username='$username'", $connection);
-			$rows = mysql_num_rows($query);
-			if ($rows == 1) {
-			$_SESSION['login_user']=$username; // Initializing Session
-			header("location: profile.php"); // Redirecting To Other Page
-			} else {
-			$error = "Username or Password is invalid";
-			}
-			mysql_close($connection); // Closing Connection
-		}
-	}
-?>
+
 
