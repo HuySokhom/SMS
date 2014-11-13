@@ -1,4 +1,9 @@
 <?php
+
+set_include_path('..');
+
+require_once 'include/configure.php';
+
 if($_POST['page'])
 {
 	$page = $_POST['page'];
@@ -12,7 +17,7 @@ if($_POST['page'])
 	$start = $page * $per_page;
 	
 
-	$query_pag_data = "SELECT id,name from adminstrator LIMIT $start, $per_page";
+	$query_pag_data = "SELECT id,name from administrator LIMIT $start, $per_page";
 	$result_pag_data = mysql_query($query_pag_data) or die('MySql Error' . mysql_error());
 	$msg = "";
 	while ($row = mysql_fetch_array($result_pag_data)) {
@@ -23,7 +28,7 @@ if($_POST['page'])
 
 
 	/* --------------------------------------------- */
-	$query_pag_num = "SELECT COUNT(*) AS count FROM adminstrator";
+	$query_pag_num = "SELECT COUNT(*) AS count FROM administrator";
 	$result_pag_num = mysql_query($query_pag_num);
 	$row = mysql_fetch_array($result_pag_num);
 	$count = $row['count'];
