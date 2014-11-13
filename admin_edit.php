@@ -30,7 +30,7 @@
 			<?php 
 				if ($_POST) {
 					$username = $_POST['name'];
-					$password = $_POST['password'];
+					$password = md5($_POST['password']);
 					$sql="INSERT INTO administrator(name, password)VALUES('$username', '$password')";
 					$result=mysql_query($sql);
 					
