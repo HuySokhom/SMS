@@ -12,6 +12,7 @@
 <?php 
 	// connection database
 	require 'include/configure.php';
+	require 'session.php';
 ?>
 <title>SB Admin - Bootstrap Admin Template</title>
 
