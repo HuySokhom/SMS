@@ -22,7 +22,7 @@
 
 					</td>
 					<td>
-						<button type="button" class="btn btn-warning">Cancel</button>
+						<a href="admin.php"><button type="button" class="btn btn-warning">Cancel</button></a>
 					</td>
 				</tr>
 			</table>
@@ -36,15 +36,14 @@
 					
 					// if successfully insert data into database, displays message "Successful". 
 					if($result){
-					echo "Successful";
-					
+						echo "Successful";					
 					}
 				}
 				
 			?>
 			<?php
-				if( $_GET['edit'] ){
-					echo 'hello'. $row['id'];
+				if( isset($_GET['edit'])){
+					var_dump( $_GET );
 				}
 			?>
 			
