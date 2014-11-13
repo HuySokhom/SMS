@@ -5,9 +5,11 @@
 <div id="page-wrapper">
 	<!-- /.container-fluid -->
 	<div class="container-fluid">	
-		<div align="center" style="font-size:24px;color:#cc0000;font-weight:bold">Pagination with jquery, Ajax and PHP</div>
-	        <div id="loading"></div>
-	        <div id="container">
+		<div align="center" style="font-size:24px;color:#cc0000;font-weight:bold">
+			Student Information	
+		</div>
+	    <div id="loading"></div>
+		<div id="container">
 			<div class="data"></div>
             <div class="pagination"></div>
         </div>
