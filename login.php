@@ -91,7 +91,7 @@
 		{
 			// Define $username and $password
 			$username=$_POST['name'];
-			$password=$_POST['password'];
+			$password= md5($_POST['password']);
 			// Establishing Connection with Server by passing server_name, user_id and password as a parameter
 			// To protect MySQL injection for Security purpose
 			$username = stripslashes($username);
