@@ -1,8 +1,8 @@
 #loading{
     width: 100%;
     position: absolute;
-    top: 100px;
-    left: 150px;
+    top: 210px;
+    left: 400px;
 }
 #container .pagination ul li.inactive,
 #container .pagination ul li.inactive:hover{
