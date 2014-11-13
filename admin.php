@@ -24,7 +24,7 @@
 			        echo "<tr><td>" . $row['name'] ."</td>";
 			        
 			        echo "<td>"    . $row['password']   ."</td>";
-			        echo "<td><a href=index?edit=".$row['id'].">Edit</a></td></tr>";
+			        echo "<td><a href=admin_edit?edit=".$row['id'].">Edit</a></td></tr>";
 			        
 			    }
 			    
