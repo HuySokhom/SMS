@@ -7,73 +7,108 @@
 <div id="page-wrapper" ng-app="app">
 	<!-- /.container-fluid -->
 	<div class="container-fluid">
-		<h1>Adminstrator</h1>
-		<table width=100% class="table table-bordered">
-			<tr>
-				<th>Name</th>
-				<th>Password</th>
-				<th>Action</th>
-			</tr>
-			<?php
-			    $result = $db->query("SELECT * FROM administrator");
-			
-			    while ($row = mysql_fetch_assoc($result)) {
-			    	
-			        echo "<tr><td>" . $row['name'] ."</td>";
-			        
-			        echo "<td>"    . $row['password']   ."</td>";
-			        echo "<td><a href=index?edit=".$row['id'].">Edit</a></td></tr>";
-			        
-			    }
-			    
-			?>
-			</table>
-
-		<h1>Create New Admin</h1>
-		<form method="post">
-			<table class="table table-bordered">
-				<tr>
-					<td>name</td>
-					<td><input type="text" class="form-control" required="required"
-						name="name" id="name"></td>
-				</tr>
-				<tr>
-					<td>password</td>
-					<td><input type="password" class="form-control" required="required"
-						name="password" id="password"></td>
-				</tr>
-				<tr>
-					<td>
-						<button type="submit" class="btn btn-success">Add</button>
-
-					</td>
-					<td>
-						<button type="button" class="btn btn-warning">Cancel</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-			<?php 
-				if ($_POST) {
-					$username = $_POST['name'];
-					$password = $_POST['password'];
-					$sql="INSERT INTO administrator(name, password)VALUES('$username', '$password')";
-					$result=mysql_query($sql);
-					
-					// if successfully insert data into database, displays message "Successful". 
-					if($result){
-					echo "Successful";
-					
-					}
-				}
-				
-			?>
-			<?php
-				if( $_GET['edit'] ){
-					echo 'hello'. $row['id'];
-				}
-			?>
-			
+	<div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Dashboard <small>Welcome</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Dashboard
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-comments fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">26</div>
+                                        <div>New Comments!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-tasks fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">12</div>
+                                        <div>New Tasks!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">124</div>
+                                        <div>New Orders!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-support fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">13</div>
+                                        <div>Support Tickets!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 	</div>
 </div>
 <!-- /#wrapper -->
