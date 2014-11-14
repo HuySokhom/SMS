@@ -4,16 +4,45 @@
 	<div class="container-fluid">
 		<?php 
 			echo $message = '';
-			if ($_POST) {
+			if ( isset($_POST['submit']) ){
 				$username = $_POST['name'];
 				$password = md5($_POST['password']);
-				$sql="INSERT INTO administrator(name, password)VALUES('$username', '$password')";
-				$result=mysql_query($sql);
+				// check name if existing
+				$q = $db->query("
+					SELECT 
+						name
+					FROM
+						administrator
+					WHERE 
+						name = '".$username."'
+				");
+				$result_q = mysql_fetch_assoc($q);
 				
-				// if successfully insert data into database, displays message "Successful". 
-				if($result){
-					$message .= "<div class='alert alert-success'><strong>Successful</strong></div>";					
+				if ( $result_q > 0 ) {
+					$message .= "<div class='alert alert-warning'><strong>Wanring!</strong>existing user name</div>";
 				}
+				else {
+					$sql="
+						INSERT INTO
+							administrator
+						(
+							name,
+							password
+						)
+							VALUES
+						(
+							'$username',
+							'$password'
+						)
+					";
+					$result=mysql_query($sql);
+					
+					// if successfully insert data into database, displays message "Successful".
+					if($result){
+						$message .= "<div class='alert alert-success'><strong>Successful</strong>user has been create</div>";
+					}
+				}
+				
 			}
 				
 		?>
@@ -37,7 +66,7 @@
 				</tr>
 				<tr>
 					<td>
-						<button type="submit" class="btn btn-success">Add New</button>
+						<button type="submit" name="submit" class="btn btn-success">Add New</button>
 
 					</td>
 					<td>
