@@ -12,9 +12,9 @@
 <?php 
 	// connection database
 	require 'include/configure.php';
-	require 'session.php';
+	require_once 'session.php';
 ?>
-<title>SB Admin - Bootstrap Admin Template</title>
+<title></title>
 
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
 									</span>
 									<div class="media-body">
 										<h5 class="media-heading">
-											<strong><?php echo $user_check;?></strong>
+											<strong><?php ?></strong>
 										</h5>
 										<p class="small text-muted">
 											<i class="fa fa-clock-o"></i> Yesterday at 4:32 PM
@@ -83,7 +83,7 @@
 									</span>
 									<div class="media-body">
 										<h5 class="media-heading">
-											<strong><?php echo $user_check;?></strong>
+											<strong><?php ?></strong>
 										</h5>
 										<p class="small text-muted">
 											<i class="fa fa-clock-o"></i> Yesterday at 4:32 PM
@@ -99,7 +99,7 @@
 									</span>
 									<div class="media-body">
 										<h5 class="media-heading">
-											<strong><?php echo $user_check;?></strong>
+											<strong><?php //echo $user_check;?></strong>
 										</h5>
 										<p class="small text-muted">
 											<i class="fa fa-clock-o"></i> Yesterday at 4:32 PM
@@ -129,7 +129,7 @@
 						<li><a href="#">View All</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $user_check;?> <b
+					data-toggle="dropdown"><i class="fa fa-user"></i> <?php //echo $user_check;?> <b
 						class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a></li>
