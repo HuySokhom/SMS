@@ -9,7 +9,7 @@ if($_POST['page'])
 	$page = $_POST['page'];
 	$cur_page = $page;
 	$page -= 1;
-	$per_page = 5;
+	$per_page = 10;
 	$previous_btn = true;
 	$next_btn = true;
 	$first_btn = true;
@@ -17,25 +17,30 @@ if($_POST['page'])
 	$start = $page * $per_page;
 	
 
-	$query_pag_data = "SELECT * from administrator LIMIT $start, $per_page";
+	$query_pag_data = "SELECT * from students LIMIT $start, $per_page";
 	
 	$result_pag_data = mysql_query($query_pag_data) or die('MySql Error' . mysql_error());
 	
 	$msg = "<table width=100% class='table table-bordered'><tr>
-				<th width='600px'>Name</th>
-				<th width='600px'>Password</th>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Gender</th>
+				<th>Address</th>
 				<th>Action</th>
 			</tr>";
 	while ($row = mysql_fetch_array($result_pag_data)) {
-		$htmlmsg = htmlentities($row['password']);
-		$msg .= "<tr><td>" . $row['name'] . "</td><td>" . $htmlmsg . "</td>";
+		$msg .= "<tr>
+					<td>" . $row['id'] . "</td>
+					<td>" . $row['first_name'] . $row['last_name'] . "</td>
+					<td>" . $row['gender'] . "</td>
+					<td>" . $row['address'] . "</td>";
 		$msg .="<td><a href=''>Edit</a></td></tr>";
 	}
 	$msg = "<div class='data'>" . $msg . "</table></div>"; // Content for Data
 
 
 	/* --------------------------------------------- */
-	$query_pag_num = "SELECT COUNT(*) AS count FROM administrator";
+	$query_pag_num = "SELECT COUNT(*) AS count FROM students";
 	$result_pag_num = mysql_query($query_pag_num);
 	$row = mysql_fetch_array($result_pag_num);
 	$count = $row['count'];
