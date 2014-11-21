@@ -9,7 +9,7 @@ $(document).ready(function(){
 		loading_show();        
 		$.ajax({
 			type: "POST",
-			url: "ajax/load_admin.php",
+			url: "ajax/load_students.php",
 			data: "page="+page,
 			success: function(msg)
 			{
