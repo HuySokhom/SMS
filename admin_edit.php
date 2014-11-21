@@ -1,63 +1,64 @@
 <?php require 'include/header.php';?>
 <div id="page-wrapper" ng-app="app">
 	<!-- /.container-fluid -->
-	<div class="container-fluid">
-		<?php 
+	<div class="container-fluid">		
+		<?php
 			echo $message = '';
-			if ( isset($_POST['submit']) ){
-				$username = $_POST['name'];
-				$password = md5($_POST['password']);
-				// check name if existing
-				$q = $db->query("
-					SELECT 
+			if( isset($_GET['edit'])){
+				$id = $_GET['edit'];
+				$query = $db->query("
+					SELECT
 						name
 					FROM
 						administrator
-					WHERE 
+					WHERE
+						id = '".$id."'
+				");
+				$result_q = mysql_fetch_assoc($query);
+			}
+		?>
+		<?php 
+			if ( isset($_POST['submit']) ){
+				$username = $_POST['name'];echo $username;
+				$password = md5($_POST['password']);
+				// check name if existing
+				$q = $db->query("
+					SELECT
+						name
+					FROM
+						administrator
+					WHERE
 						name = '".$username."'
 				");
 				$result_q = mysql_fetch_assoc($q);
 				
 				if ( $result_q > 0 ) {
 					$message .= "<div class='alert alert-warning'><strong>Wanring!</strong>existing user name</div>";
-				}
-				else {
+				}else{
 					$sql="
-						INSERT INTO
+						UPDATE
 							administrator
-						(
-							name,
-							password
-						)
-							VALUES
-						(
-							'$username',
-							'$password'
-						)
+						SET
+							name = '". $username . "',
+							password = '" .$password ."'
+						WHERE
+							id = $id
 					";
-					$result=mysql_query($sql);
-					
-					// if successfully insert data into database, displays message "Successful".
-					if($result){
-						$message .= "<div class='alert alert-success'><strong>Successful</strong>user has been create</div>";
-					}
+					$result = mysql_query($sql);
+					if ($sql) {
+						$message .= "<div class='alert alert-success'><strong>Successful</strong>user has been update</div>";
+					}			
 				}
-				
 			}
-				
+		
 		?>
-		<?php
-			if( isset($_GET['edit'])){
-				var_dump( $_GET );
-			}
-		?>
-		<h1>Create New Admin</h1>
+		<h1>Edit Admin</h1>
 		<form method="post">
 			<table class="table table-bordered">
 				<tr>
 					<td>name</td>
 					<td><input type="text" class="form-control" required="required"
-						name="name" id="name"></td>
+						name="name" id="name" value=<?php echo $result_q['name'];?>></td>
 				</tr>
 				<tr>
 					<td>password</td>
@@ -66,7 +67,7 @@
 				</tr>
 				<tr>
 					<td>
-						<button type="submit" name="submit" class="btn btn-success">Add New</button>
+						<button type="submit" name="submit" class="btn btn-success">Update</button>
 
 					</td>
 					<td>
