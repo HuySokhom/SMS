@@ -8,12 +8,12 @@
 	<!-- /.container-fluid -->
 	<div class="container-fluid">
 		<h1>Adminstrator</h1>
-		<a href="admin_edit.php"><button class="btn btn-success">Add New User</button></a>
+		<a href="admin_new.php"><button class="btn btn-success">Add New User</button></a>
 		<br/><br/>
 		<table width=100% class="table table-bordered">
 			<tr>
+				<th>ID</th>
 				<th>Name</th>
-				<th>Password</th>
 				<th>Action</th>
 			</tr>
 			<?php
@@ -21,10 +21,10 @@
 			
 			    while ($row = mysql_fetch_assoc($result)) {
 			    	
-			        echo "<tr><td>" . $row['name'] ."</td>";
+			        echo "<tr><td>" . $row['id'] ."</td>";
 			        
-			        echo "<td>"    . $row['password']   ."</td>";
-			        echo "<td><a href=admin_edit?edit=".$row['id'].">Edit</a></td></tr>";
+			        echo "<td>"    . $row['name']   ."</td>";
+			        echo "<td><a href=admin_edit.php?edit=".$row['id'].">Edit</a></td></tr>";
 			        
 			    }
 			    
