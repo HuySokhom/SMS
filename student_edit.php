@@ -2,7 +2,9 @@
 <div id="page-wrapper">
 	<!-- /.container-fluid -->
 	<div class="container-fluid">
-		
+		<?php 
+			echo 'HELLO';
+		?>
 	</div>
 </div>
 
