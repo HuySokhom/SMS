@@ -8,7 +8,7 @@
 		<div align="center" style="font-size:30px;color:#cc0000;font-weight:bold">
 			Student Information	
 		</div>		
-		<a href="student_edit.php"><button class="btn btn-success">Add New User</button></a>
+		<a href="student_new.php"><button class="btn btn-success">Add New User</button></a>
 		<br/><br/>
 	    <div id="loading"></div>
 		<div id="container">
