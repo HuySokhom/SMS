@@ -19,36 +19,19 @@
 		?>
 		<?php 
 			if ( isset($_POST['submit']) ){
-				$username = $_POST['name'];echo $username;
 				$password = md5($_POST['password']);
-				// check name if existing
-				$q = $db->query("
-					SELECT
-						name
-					FROM
+				$sql="
+					UPDATE
 						administrator
+					SET
+						password = '" .$password ."'
 					WHERE
-						name = '".$username."'
-				");
-				$result_q = mysql_fetch_assoc($q);
-				
-				if ( $result_q > 0 ) {
-					$message .= "<div class='alert alert-warning'><strong>Wanring!</strong>existing user name</div>";
-				}else{
-					$sql="
-						UPDATE
-							administrator
-						SET
-							name = '". $username . "',
-							password = '" .$password ."'
-						WHERE
-							id = $id
-					";
-					$result = mysql_query($sql);
-					if ($sql) {
-						$message .= "<div class='alert alert-success'><strong>Successful</strong>user has been update</div>";
-					}			
-				}
+						id = $id
+				";
+				$result = mysql_query($sql);
+				if ($sql) {
+					$message .= "<div class='alert alert-success'><strong>Successful</strong>user has been update</div>";
+				}			
 			}
 		
 		?>
@@ -57,7 +40,7 @@
 			<table class="table table-bordered">
 				<tr>
 					<td>name</td>
-					<td><input type="text" class="form-control" required="required"
+					<td><input type="text" class="form-control" required="required" disabled="disabled"
 						name="name" id="name" value=<?php echo $result_q['name'];?>></td>
 				</tr>
 				<tr>
